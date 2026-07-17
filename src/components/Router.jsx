@@ -16,7 +16,6 @@ export const pages = [
   'gem',
   'unesco',
   'discoveries',
-  'timeline',
   'hieroglyphics',
   'visit'
 ];

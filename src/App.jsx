@@ -36,7 +36,6 @@ function AppContent() {
           <Route path="/:lang/gem" element={<GEM />} />
           <Route path="/:lang/unesco" element={<UNESCO />} />
           <Route path="/:lang/discoveries" element={<Discoveries />} />
-          <Route path="/:lang/timeline" element={<Timeline />} />
           <Route path="/:lang/hieroglyphics" element={<Hieroglyphics />} />
           <Route path="/:lang/visit" element={<PlanVisit />} />
           <Route path="*" element={<Home />} />
