@@ -2214,11 +2214,17 @@ html[dir="rtl"] .faq-question-btn {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
+  .section-header h1 {
+    font-size: 2.2rem;
+  }
 }
 @media (max-width: 480px) {
   .page-container {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  .section-header h1 {
+    font-size: 1.75rem;
   }
   .modal-container {
     padding: 1.25rem 1rem;
