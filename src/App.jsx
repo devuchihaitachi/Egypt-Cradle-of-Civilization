@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { NavigationProvider, useNavigation } from './components/Router';
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/Navbar';
@@ -46,12 +46,12 @@ function AppContent() {
 
 export default function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <HashRouter>
       <LanguageProvider>
         <NavigationProvider>
           <AppContent />
         </NavigationProvider>
       </LanguageProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
