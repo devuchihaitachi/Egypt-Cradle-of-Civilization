@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useNavigation } from './Router';
-import { Github, Globe, Sparkles, Compass, ShieldCheck } from 'lucide-react';
+import { Globe, Sparkles, Compass } from 'lucide-react';
 
 export default function Footer() {
   const { t, language, toggleLanguage } = useLanguage();
@@ -56,15 +56,6 @@ export default function Footer() {
             <p className="footer-brand-desc">{t('footer.desc')}</p>
             
             <div className="footer-social-row">
-              <a 
-                href="https://github.com/devuchihaitachi/Egypt-Cradle-of-Civilization" 
-                target="_blank" 
-                rel="noreferrer"
-                className="footer-social-btn"
-                aria-label="GitHub Repository"
-              >
-                <Github size={18} />
-              </a>
               <button 
                 onClick={toggleLanguage} 
                 className="footer-social-btn lang-toggle-btn"
@@ -114,17 +105,6 @@ export default function Footer() {
                   <Compass size={14} />
                   <span>{t('nav.visit')}</span>
                 </button>
-              </li>
-              <li>
-                <a 
-                  href="https://github.com/devuchihaitachi/Egypt-Cradle-of-Civilization" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="link-with-icon"
-                >
-                  <ShieldCheck size={14} />
-                  <span>{t('footer.github')}</span>
-                </a>
               </li>
             </ul>
           </div>
