@@ -101,7 +101,7 @@ export const translations = {
       nubiaRescueDesc: 'In the 1960s, a monumental UNESCO-led international engineering campaign dismantled and relocated the Abu Simbel and Philae temples 65m higher to save them from being flooded by Lake Nasser after the construction of the Aswan High Dam.',
       categories: {
         pharaonic: 'Pharaonic & Ptolemaic',
-        obelisks: 'Ancient Egyptian Obelisks',
+        obelisks: 'Egyptian Obelisks',
         grecoRoman: 'Greco-Roman',
         coptic: 'Coptic & Christian',
         islamic: 'Islamic & Fortresses',
