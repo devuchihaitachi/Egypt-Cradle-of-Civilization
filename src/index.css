@@ -18,6 +18,11 @@
   padding: 0;
 }
 
+html, body, #root, .app-shell {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--bg-main);
   background-image: var(--bg-glow);
@@ -25,6 +30,7 @@ body {
   font-family: var(--font-body);
   overflow-x: hidden;
   min-height: 100vh;
+  width: 100%;
 }
 
 h1, h2, h3, h4 {
@@ -2579,33 +2585,36 @@ html[dir="rtl"] .faq-question-btn {
 /* ===== MOTION FOOTER REVEAL & FULL-WIDTH LAYOUT ===== */
 .footer-motion-wrapper {
   width: 100%;
+  max-width: 100%;
   margin-top: 5rem;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
 /* Standalone Giant Brand Title ABOVE the Footer Box */
 .footer-standalone-title-container {
   width: 100%;
+  max-width: 100%;
   text-align: center;
-  padding: 3rem 1rem 1rem 1rem;
+  padding: 2rem 1rem 0.5rem 1rem;
   box-sizing: border-box;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
   user-select: none;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .footer-standalone-title {
   font-family: var(--font-heading);
-  font-size: clamp(3.5rem, 15vw, 13.5rem);
+  font-size: clamp(3rem, 13.5vw, 11.5rem);
   font-weight: 900;
-  line-height: 1.45;
+  line-height: 1.5;
   letter-spacing: -1px;
   text-transform: uppercase;
   margin: 0;
-  padding: 1.5rem 0.5rem;
+  padding: 1rem 0.5rem;
   display: inline-block;
+  max-width: 100%;
   background: linear-gradient(135deg, #fce088 0%, #d4af37 50%, #997a15 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
