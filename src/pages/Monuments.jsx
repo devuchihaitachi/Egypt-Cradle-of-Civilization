@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Grid, ChevronDown, ChevronUp } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import Modal from '../components/Modal';
 import { useLanguage } from '../context/LanguageContext';
@@ -17,12 +18,20 @@ const monumentMap = {
   natural: ['whaleValley', 'oasisTombs']
 };
 
-
-
 export default function Monuments() {
   const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('pharaonic');
   const [selectedMonumentId, setSelectedMonumentId] = useState(null);
+  const [isCategoriesExpanded, setIsCategoriesExpanded] = useState(false);
+
+  const toggleCategories = () => {
+    setIsCategoriesExpanded((prev) => !prev);
+  };
+
+  const handleCategorySelect = (cat) => {
+    setActiveCategory(cat);
+    setIsCategoriesExpanded(false);
+  };
 
   return (
     <div className="page-view page-container monuments-page">
@@ -33,19 +42,39 @@ export default function Monuments() {
         </div>
       </ScrollReveal>
 
-      {/* Category Tabs */}
+      {/* Expandable Category Navigation */}
       <ScrollReveal delay={100}>
-        <div className="monuments-tabs-container">
-          <div className="monuments-tabs">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                className={`tab-btn ${activeCategory === cat ? 'active' : ''}`}
-                onClick={() => setActiveCategory(cat)}
-              >
-                {t(`monuments.categories.${cat}`)}
-              </button>
-            ))}
+        <div className="monuments-categories-wrapper">
+          <div className="categories-header-bar">
+            <div className="active-category-pill">
+              <span className="pill-dot"></span>
+              <span className="pill-text">{t(`monuments.categories.${activeCategory}`)}</span>
+            </div>
+            
+            <button
+              className="categories-toggle-btn"
+              onClick={toggleCategories}
+              aria-expanded={isCategoriesExpanded}
+              aria-label={isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}
+            >
+              <Grid className="toggle-icon" size={16} />
+              <span>{isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}</span>
+              {isCategoriesExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+          </div>
+
+          <div className={`categories-grid-panel ${isCategoriesExpanded ? 'expanded' : ''}`}>
+            <div className="categories-grid">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`category-grid-btn ${activeCategory === cat ? 'active' : ''}`}
+                  onClick={() => handleCategorySelect(cat)}
+                >
+                  <span className="cat-btn-text">{t(`monuments.categories.${cat}`)}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </ScrollReveal>
@@ -125,4 +154,3 @@ export default function Monuments() {
     </div>
   );
 }
-
