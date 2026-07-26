@@ -97,6 +97,8 @@ export const translations = {
       subtitle: 'Vast halls of stone, carved with hieroglyphs honoring kings and deities.',
       location: 'Location',
       age: 'Age',
+      allCategories: 'All Categories',
+      closeCategories: 'Close Categories',
       nubiaRescueTitle: 'UNESCO Relocation Campaign',
       nubiaRescueDesc: 'In the 1960s, a monumental UNESCO-led international engineering campaign dismantled and relocated the Abu Simbel and Philae temples 65m higher to save them from being flooded by Lake Nasser after the construction of the Aswan High Dam.',
       categories: {
@@ -1197,6 +1199,8 @@ export const translations = {
       subtitle: 'أبهاء وقاعات حجرية شاسعة منقوشة بالهيروغليفية تخليداً للملوك والآلهة.',
       location: 'الموقع',
       age: 'العمر',
+      allCategories: 'جميع التصنيفات',
+      closeCategories: 'إغلاق التصنيفات',
       nubiaRescueTitle: 'حملة إنقاذ ونقل معابد أبو سمبل',
       nubiaRescueDesc: 'في الستينيات، وتحت إشراف اليونسكو وبمشاركة هندسية دولية، تم تفكيك معبد أبو سمبل ومعبد فيلة بالكامل ونقلهما لموقع أعلى بـ 65 متراً لحمايتهما من الغرق تحت مياه بحيرة ناصر بعد تشييد السد العالي في أسوان.',
       categories: {
