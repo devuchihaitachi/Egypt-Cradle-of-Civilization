@@ -16,6 +16,17 @@ export const translations = {
       toggleLang: 'العربية',
       logo: 'EGYPT'
     },
+    footer: {
+      bigTitle: 'EGYPT',
+      tagline: 'Crafted with restraint. Built to outlive trends.',
+      desc: 'Journey through 5,000 years of majestic history, monumental architecture, and the eternal legacy of the Pharaohs.',
+      navigation: 'Navigation',
+      explore: 'Explore & Discover',
+      interactive: 'Interactive Tools',
+      about: 'About Project',
+      github: 'GitHub Repo',
+      rights: '© 2026 Egypt: Cradle of Civilization. Rooted in craft, refined through time.'
+    },
     home: {
       title: 'Egypt: Cradle of Civilization',
       subtitle: 'Journey through 5,000 years of majestic history, monumental architecture, and the eternal legacy of the Pharaohs.',
@@ -1117,6 +1128,17 @@ export const translations = {
       visit: 'خطط لزيارتك',
       toggleLang: 'English',
       logo: 'مصر'
+    },
+    footer: {
+      bigTitle: 'مِصْرُ',
+      tagline: 'مُنَفَّذَةٌ بِإِتْقَانٍ. صُمِّمَتْ لِتَتَخَطَّى حُدُودَ الزَّمَنِ.',
+      desc: 'رحلة تفاعلية عبر 5000 عام من التاريخ والآثار والفرعنة وإرث الإنسان المصري القديم الخالد.',
+      navigation: 'التصفح السريع',
+      explore: 'استكشف واكتشف',
+      interactive: 'أدوات تفاعلية',
+      about: 'عن المشروع',
+      github: 'مستودع GitHub',
+      rights: '© 2026 مصر: مهد الحضارات. إتقان تاريخي يتخطى حدود الزمان.'
     },
     home: {
       title: 'مصر: مهد الحضارة',

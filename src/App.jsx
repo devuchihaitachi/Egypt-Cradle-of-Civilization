@@ -2,6 +2,7 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { NavigationProvider, useNavigation } from './components/Router';
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Pyramids from './pages/Pyramids';
 import Monuments from './pages/Monuments';
@@ -40,6 +41,7 @@ function AppContent() {
           <Route path="*" element={<Home />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }
