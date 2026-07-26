@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useNavigation } from './Router';
 import { Github, Globe, Sparkles, Compass, ShieldCheck } from 'lucide-react';
@@ -5,17 +6,48 @@ import { Github, Globe, Sparkles, Compass, ShieldCheck } from 'lucide-react';
 export default function Footer() {
   const { t, language, toggleLanguage } = useLanguage();
   const { navigateTo } = useNavigation();
+  const footerRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!footerRef.current) return;
+      const rect = footerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      if (rect.top < windowHeight) {
+        const progress = Math.min(1, Math.max(0, (windowHeight - rect.top) / (windowHeight * 0.8)));
+        setScrollProgress(progress);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <footer className="footer-container">
-      <div className="negative-footer-card">
-        {/* Giant Negative Typography Header */}
-        <div className="footer-negative-title-wrapper">
-          <h1 className="footer-negative-title">
-            {t('footer.bigTitle')}
-          </h1>
-        </div>
+    <footer ref={footerRef} className="footer-motion-wrapper">
+      {/* Standalone Giant Brand Title ABOVE the Footer Card */}
+      <div 
+        className="footer-standalone-title-container"
+        style={{
+          transform: `translateY(${(1 - scrollProgress) * 45}px) scale(${0.92 + scrollProgress * 0.08})`,
+          opacity: 0.35 + scrollProgress * 0.65
+        }}
+      >
+        <h1 className="footer-standalone-title">
+          {t('footer.bigTitle')}
+        </h1>
+      </div>
 
+      {/* Full-Width Edge to Edge Footer Card */}
+      <div 
+        className="footer-fullwidth-card"
+        style={{
+          transform: `translateY(${(1 - scrollProgress) * 25}px)`
+        }}
+      >
         {/* Footer Grid Content */}
         <div className="footer-content-grid">
           {/* Column 1: Brand Tagline */}
