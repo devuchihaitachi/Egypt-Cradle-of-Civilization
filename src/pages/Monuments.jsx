@@ -43,41 +43,39 @@ export default function Monuments() {
       </ScrollReveal>
 
       {/* Expandable Category Navigation */}
-      <ScrollReveal delay={100}>
-        <div className="monuments-categories-wrapper">
-          <div className="categories-header-bar">
-            <div className="active-category-pill">
-              <span className="pill-dot"></span>
-              <span className="pill-text">{t(`monuments.categories.${activeCategory}`)}</span>
-            </div>
-            
-            <button
-              className="categories-toggle-btn"
-              onClick={toggleCategories}
-              aria-expanded={isCategoriesExpanded}
-              aria-label={isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}
-            >
-              <Grid className="toggle-icon" size={16} />
-              <span>{isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}</span>
-              {isCategoriesExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-            </button>
+      <div className="monuments-categories-wrapper">
+        <div className="categories-header-bar">
+          <div className="active-category-pill">
+            <span className="pill-dot"></span>
+            <span className="pill-text">{t(`monuments.categories.${activeCategory}`)}</span>
           </div>
+          
+          <button
+            className="categories-toggle-btn"
+            onClick={toggleCategories}
+            aria-expanded={isCategoriesExpanded}
+            aria-label={isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}
+          >
+            <Grid className="toggle-icon" size={16} />
+            <span>{isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}</span>
+            {isCategoriesExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
+        </div>
 
-          <div className={`categories-grid-panel ${isCategoriesExpanded ? 'expanded' : ''}`}>
-            <div className="categories-grid">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  className={`category-grid-btn ${activeCategory === cat ? 'active' : ''}`}
-                  onClick={() => handleCategorySelect(cat)}
-                >
-                  <span className="cat-btn-text">{t(`monuments.categories.${cat}`)}</span>
-                </button>
-              ))}
-            </div>
+        <div className={`categories-grid-panel ${isCategoriesExpanded ? 'expanded' : ''}`}>
+          <div className="categories-grid">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                className={`category-grid-btn ${activeCategory === cat ? 'active' : ''}`}
+                onClick={() => handleCategorySelect(cat)}
+              >
+                <span className="cat-btn-text">{t(`monuments.categories.${cat}`)}</span>
+              </button>
+            ))}
           </div>
         </div>
-      </ScrollReveal>
+      </div>
 
       {/* Monuments Grid */}
       <div className="monuments-layout" key={activeCategory}>

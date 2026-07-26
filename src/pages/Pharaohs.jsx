@@ -67,49 +67,47 @@ export default function Pharaohs() {
       </ScrollReveal>
 
       {/* Expandable Category Navigation */}
-      <ScrollReveal delay={100}>
-        <div className="monuments-categories-wrapper">
-          <div className="categories-header-bar">
-            <div className="active-category-pill">
-              <span className="pill-dot"></span>
-              <span className="pill-text" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-                {activeSection === 'rulers' ? <Crown size={16} /> : <Sparkles size={16} />}
-                {activeSection === 'rulers' ? t('pharaohs.rulersSection') : t('pharaohs.godsSection')}
-              </span>
-            </div>
-            
+      <div className="monuments-categories-wrapper">
+        <div className="categories-header-bar">
+          <div className="active-category-pill">
+            <span className="pill-dot"></span>
+            <span className="pill-text" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+              {activeSection === 'rulers' ? <Crown size={16} /> : <Sparkles size={16} />}
+              {activeSection === 'rulers' ? t('pharaohs.rulersSection') : t('pharaohs.godsSection')}
+            </span>
+          </div>
+          
+          <button
+            className="categories-toggle-btn"
+            onClick={toggleCategories}
+            aria-expanded={isCategoriesExpanded}
+            aria-label={isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}
+          >
+            <Grid className="toggle-icon" size={16} />
+            <span>{isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}</span>
+            {isCategoriesExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
+        </div>
+
+        <div className={`categories-grid-panel ${isCategoriesExpanded ? 'expanded' : ''}`}>
+          <div className="categories-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))' }}>
             <button
-              className="categories-toggle-btn"
-              onClick={toggleCategories}
-              aria-expanded={isCategoriesExpanded}
-              aria-label={isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}
+              className={`category-grid-btn ${activeSection === 'rulers' ? 'active' : ''}`}
+              onClick={() => handleSectionSelect('rulers')}
             >
-              <Grid className="toggle-icon" size={16} />
-              <span>{isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}</span>
-              {isCategoriesExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+              <Crown size={16} style={{ marginInlineEnd: '0.4rem' }} />
+              <span className="cat-btn-text">{t('pharaohs.rulersSection')}</span>
+            </button>
+            <button
+              className={`category-grid-btn ${activeSection === 'gods' ? 'active' : ''}`}
+              onClick={() => handleSectionSelect('gods')}
+            >
+              <Sparkles size={16} style={{ marginInlineEnd: '0.4rem' }} />
+              <span className="cat-btn-text">{t('pharaohs.godsSection')}</span>
             </button>
           </div>
-
-          <div className={`categories-grid-panel ${isCategoriesExpanded ? 'expanded' : ''}`}>
-            <div className="categories-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))' }}>
-              <button
-                className={`category-grid-btn ${activeSection === 'rulers' ? 'active' : ''}`}
-                onClick={() => handleSectionSelect('rulers')}
-              >
-                <Crown size={16} style={{ marginInlineEnd: '0.4rem' }} />
-                <span className="cat-btn-text">{t('pharaohs.rulersSection')}</span>
-              </button>
-              <button
-                className={`category-grid-btn ${activeSection === 'gods' ? 'active' : ''}`}
-                onClick={() => handleSectionSelect('gods')}
-              >
-                <Sparkles size={16} style={{ marginInlineEnd: '0.4rem' }} />
-                <span className="cat-btn-text">{t('pharaohs.godsSection')}</span>
-              </button>
-            </div>
-          </div>
         </div>
-      </ScrollReveal>
+      </div>
 
       {/* Rulers Section */}
       <div id="rulers-section" className="page-sub-section">

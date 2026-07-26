@@ -54,11 +54,28 @@ export function NavigationProvider({ children }) {
       }
       prevPageRef.current = currentPage;
     }
-  }, [currentPage]);
+    if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+      try {
+        window.scrollTo(0, 0);
+      } catch {
+        // Safe fallback for JSDOM environment in unit tests
+      }
+    }
+  }, [currentPage, location.pathname]);
 
   const navigateTo = (targetPage) => {
     if (!pages.includes(targetPage)) return;
-    navigate(pageToPath(targetPage, language));
+    if (targetPage === currentPage) {
+      if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+        try {
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        } catch {
+          window.scrollTo(0, 0);
+        }
+      }
+    } else {
+      navigate(pageToPath(targetPage, language));
+    }
   };
 
   return (

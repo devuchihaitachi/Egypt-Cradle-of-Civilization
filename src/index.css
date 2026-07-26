@@ -1509,6 +1509,13 @@ html[dir="rtl"] .faq-question-btn {
   position: sticky;
   top: 85px;
   z-index: 100;
+  transition: top 0.3s ease;
+}
+
+@media (max-width: 1200px) {
+  .monuments-categories-wrapper {
+    top: 120px;
+  }
 }
 
 .categories-header-bar {
@@ -1516,19 +1523,19 @@ html[dir="rtl"] .faq-question-btn {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background: rgba(15, 15, 22, 0.85);
-  border: 1px solid var(--color-gold-muted, rgba(212, 175, 55, 0.3));
-  padding: 0.5rem 0.85rem 0.5rem 1.2rem;
+  background: rgba(15, 15, 22, 0.92);
+  border: 1px solid var(--color-gold-muted, rgba(212, 175, 55, 0.4));
+  padding: 0.55rem 0.95rem 0.55rem 1.3rem;
   border-radius: 30px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
 
 .categories-header-bar:hover {
   border-color: var(--color-gold);
-  box-shadow: 0 10px 36px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 12px 38px rgba(212, 175, 55, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
 .active-category-pill {
@@ -1562,7 +1569,7 @@ html[dir="rtl"] .faq-question-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0.08) 100%);
   border: 1px solid rgba(212, 175, 55, 0.4);
   color: var(--color-papyrus, #f0e6d2);
   padding: 0.45rem 0.95rem;
@@ -1577,7 +1584,7 @@ html[dir="rtl"] .faq-question-btn {
 }
 
 .categories-toggle-btn:hover {
-  background: rgba(212, 175, 55, 0.25);
+  background: rgba(212, 175, 55, 0.28);
   border-color: var(--color-gold);
   color: #ffffff;
   transform: translateY(-1px);
@@ -1605,13 +1612,13 @@ html[dir="rtl"] .faq-question-btn {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 0.6rem;
-  background: rgba(12, 12, 18, 0.9);
-  border: 1px solid var(--glass-border);
+  background: rgba(12, 12, 18, 0.95);
+  border: 1px solid rgba(212, 175, 55, 0.35);
   padding: 1rem;
   border-radius: 20px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75), 0 0 20px rgba(212, 175, 55, 0.1);
 }
 
 .category-grid-btn {
