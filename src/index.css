@@ -94,7 +94,7 @@ h1, h2, h3, h4 {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .page-view {
@@ -1495,11 +1495,14 @@ html[dir="rtl"] .faq-question-btn {
 }
 
 
-/* ===== EXPANDABLE MONUMENTS CATEGORIES ===== */
+/* ===== EXPANDABLE MONUMENTS & PHARAOHS CATEGORIES ===== */
 .monuments-categories-wrapper {
   max-width: 850px;
   margin: 0 auto 2.5rem auto;
   padding: 0 1rem;
+  position: sticky;
+  top: 85px;
+  z-index: 100;
 }
 
 .categories-header-bar {
