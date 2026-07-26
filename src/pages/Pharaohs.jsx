@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import { Crown, Sparkles, Grid, ChevronDown, ChevronUp } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import Modal from '../components/Modal';
 import { useLanguage } from '../context/LanguageContext';
-import { Crown, Sparkles } from 'lucide-react';
 import ImageWithFallback from '../components/ImageWithFallback';
 import { img } from '../utils/imagePath';
 
@@ -21,6 +21,18 @@ const deitiesList = [
 export default function Pharaohs() {
   const { t } = useLanguage();
   const [selectedItem, setSelectedItem] = useState(null); // { type: 'ruler' | 'deity', id: string }
+  const [activeSection, setActiveSection] = useState('rulers');
+  const [isCategoriesExpanded, setIsCategoriesExpanded] = useState(false);
+
+  const toggleCategories = () => {
+    setIsCategoriesExpanded((prev) => !prev);
+  };
+
+  const handleSectionSelect = (sectionId) => {
+    setActiveSection(sectionId);
+    setIsCategoriesExpanded(false);
+    document.getElementById(`${sectionId}-section`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const renderDescription = (val) => {
     if (Array.isArray(val)) {
@@ -54,23 +66,48 @@ export default function Pharaohs() {
         </div>
       </ScrollReveal>
 
-      {/* Local Sub-Navigation */}
+      {/* Expandable Category Navigation */}
       <ScrollReveal delay={100}>
-        <div className="glass-panel sub-nav-menu">
-          <button 
-            className="sub-nav-btn"
-            onClick={() => document.getElementById('rulers-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-          >
-            <Crown size={16} className="sub-nav-icon" />
-            {t('pharaohs.rulersSection')}
-          </button>
-          <button 
-            className="sub-nav-btn"
-            onClick={() => document.getElementById('gods-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-          >
-            <Sparkles size={16} className="sub-nav-icon" />
-            {t('pharaohs.godsSection')}
-          </button>
+        <div className="monuments-categories-wrapper">
+          <div className="categories-header-bar">
+            <div className="active-category-pill">
+              <span className="pill-dot"></span>
+              <span className="pill-text" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                {activeSection === 'rulers' ? <Crown size={16} /> : <Sparkles size={16} />}
+                {activeSection === 'rulers' ? t('pharaohs.rulersSection') : t('pharaohs.godsSection')}
+              </span>
+            </div>
+            
+            <button
+              className="categories-toggle-btn"
+              onClick={toggleCategories}
+              aria-expanded={isCategoriesExpanded}
+              aria-label={isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}
+            >
+              <Grid className="toggle-icon" size={16} />
+              <span>{isCategoriesExpanded ? t('monuments.closeCategories') : t('monuments.allCategories')}</span>
+              {isCategoriesExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+          </div>
+
+          <div className={`categories-grid-panel ${isCategoriesExpanded ? 'expanded' : ''}`}>
+            <div className="categories-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))' }}>
+              <button
+                className={`category-grid-btn ${activeSection === 'rulers' ? 'active' : ''}`}
+                onClick={() => handleSectionSelect('rulers')}
+              >
+                <Crown size={16} style={{ marginInlineEnd: '0.4rem' }} />
+                <span className="cat-btn-text">{t('pharaohs.rulersSection')}</span>
+              </button>
+              <button
+                className={`category-grid-btn ${activeSection === 'gods' ? 'active' : ''}`}
+                onClick={() => handleSectionSelect('gods')}
+              >
+                <Sparkles size={16} style={{ marginInlineEnd: '0.4rem' }} />
+                <span className="cat-btn-text">{t('pharaohs.godsSection')}</span>
+              </button>
+            </div>
+          </div>
         </div>
       </ScrollReveal>
 
@@ -197,4 +234,3 @@ export default function Pharaohs() {
     </div>
   );
 }
-

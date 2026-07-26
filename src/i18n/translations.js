@@ -1533,7 +1533,7 @@ export const translations = {
       readMyth: 'اقرأ التفاصيل ←',
       copyPrompt: 'نسخ الوصف للذكاء الاصطناعي',
       copied: 'تم النسخ!',
-      rulersSection: 'أشهر الفراعنة والحكام (بالترتيب الزمني)',
+      rulersSection: 'أشهر الفراعنة والحكام',
       godsSection: 'الآلهة المصرية القديمة',
       rulers: {
         narmer: {
